@@ -52,7 +52,7 @@ const ExistingListScreen = props => {
         
         const onListDelete = () => {
                 return Alert.alert(
-                  //title 
+                  //title
                   'Confirm',
                   //message
                   'Are you sure you want to delete this list?',
@@ -63,7 +63,7 @@ const ExistingListScreen = props => {
                                 onPress: () => {
                                         shopperDB.transaction(txn => {
                                                 txn.executeSql(
-                                                        `Delete FROM ${listsTableName} WHERE id = ${post.id}`,
+                                                        `DELETE FROM ${listsTableName} WHERE id = ${post.id}`,
                                                         [],
                                                         () => {
                                                                 console.log(`${name} deleted  
@@ -73,7 +73,8 @@ const ExistingListScreen = props => {
                                                                 console.log('Error on deleting list' + error.message);
                                                         }
                                                 );
-                                        });alert('List Deleted!');
+                                        });
+                                        alert('List Deleted!');
                                         navigation.navigate('Start Shopping!');
                                         
                                 }

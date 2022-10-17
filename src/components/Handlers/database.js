@@ -4,6 +4,7 @@ import { openDatabase} from "react-native-sqlite-storage"
 //use the hook to create database
 const shopperDB = openDatabase({name: 'Shopper.db'});
 const listsTableName = 'lists';
+const itemsTableName = 'Items';
 
 module.exports = {
         //Declare the function that create the lists table
@@ -51,4 +52,50 @@ module.exports = {
                         );
                 });
         },
+        
+        createItemsTable: async function () {
+                //Declare a transaction that will execute a SQL statement
+                (await shopperDB).transaction(txn => {
+                        //Execute the SQL
+                        txn.executeSql(
+                                `CREATE TABLE IF NOT EXISTS ${itemsTableName}(
+                                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        name TEXT(100),
+                                        price REAL,
+                                        quantity INTEGER
+                                );`,
+                                //ARGUMENTS NEEDED WHEN USING  an SQL prepared statemtn
+                                [],
+                                //CALL BACK FUNCTION TO HANDLE  results of SQL query
+                                () => {
+                                        console.log(' Items table created successfully');
+                                },
+                                error => {
+                                        console.log ('Error creating Items table ' + error.message);
+                                },
+
+                        );
+                });
+        },
+
+
+        addItem: async function (name, price, quantity) {
+                //Insert a row into the items table
+                (await shopperDB).transaction(txn => {
+                        //execute the SQL
+                        txn.executeSql(
+                                `INSERT INTO ${itemsTableName} (name, price, quantity) VALUES ("${item}", ${price}, ${quantity})`,
+                                //arguments passed when using SQL prepared statement
+                                [],
+                                // callback function to handle results of SQL query
+                                () => {
+                                        console.log(name + ' added successfully');
+                                },
+                                error => {
+                                console.log('Error  adding name ' + error.message);
+                                },
+                        );
+                });
+        },
 };
+
