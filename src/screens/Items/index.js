@@ -1,9 +1,12 @@
 import React from 'react';
 import  {View, TouchableOpacity, Text} from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 import styles from './styles';
 
 
 const ItemsScreen = props => {
+
+  const navigation = useNavigation();
 
 
   return (
@@ -11,7 +14,7 @@ const ItemsScreen = props => {
         <View style = {styles.bottom}>
                 <TouchableOpacity
                 style ={styles.button}
-                onPress={()=> console.log('Add Item!')}
+                onPress={()=> navigation.navigate('Add Item')}
                 >
                 <Text style ={styles.buttonText}> Add item </Text>
                 </TouchableOpacity>

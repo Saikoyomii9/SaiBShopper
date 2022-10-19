@@ -4,76 +4,75 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
 const database = require('../../components/Handlers/database.js');
-const AddList = props => {
+const AddItemScreen = props => {
 
         const navigation = useNavigation();
-        //Name of shopping, store, date
-        const [name, setName] = useState('');
-        const [store, setStore] = useState('');
-        const [date, setDate] = useState('');
 
-        const onListAdd = ()  => { //Validation //declaring a function
+        const [name, setName] = useState('');
+        const [price, setPrice] = useState('');
+        const [quantity, setQuantity] = useState('');
+        
+        const onItemAdd = ()  => {
                 if(!name) {
-                        alert( 'Please enter a shopping list name.');
+                        alert( 'Please enter an item name.');
                         return;
                 }
-                if(!store) {
-                        alert('Please enter a store name.');
+                if(!price) {
+                        alert('Please enter a price.');
                         return;
                 }
-                if(!date ) {
-                        alert('Please enter a date in format YYYT-MM-DD!');
+                if(!quantity) {
+                        alert('Please enter quantity');
                         return;
                 } 
 
                 try {
-                        database.addItem(name, store, date)
+                        database.addItem(name, price, quantity);
                 } catch (error) {
                         console.log('Error adding list  ' + error);
                 }
         
                 
                 alert(name + ' Added ');//Alert List has been added
-                navigation.navigate('Start Shopping!' );
-        }
+                navigation.navigate('Start Shopping!');
 
+        }
   return (
-    <View style={styles.container}>
-        <View style={styles.topContainer}>
-                <TextInput
+        <View style={styles.container}>
+    <View style={styles.topContainer}>
+                        <TextInput
                         value={name}
                         onChangeText={value => setName(value)}
                         style={styles.name}
                         clearButtonMode={'while-editing'}
-                        placeholder={'Enter List Name'}
+                        placeholder={'Enter Item Name'}
                         placeholderTextColor={'grey'}
                 />
                 <TextInput  
-                        value={store}
-                        onChangeText={value => setStore(value)}
-                        style={styles.store}
+                        value={price}
+                        onChangeText={value => setPrice(value)}
+                        style={styles.price}
                         clearButtonMode={'while-editing'}
-                        placeholder={'Enter Store'}
+                        placeholder={'Enter Price'}
                         placeholderTextColor={'grey'}
                 />
                 <TextInput  
-                        value={date}
-                        onChangeText={value => setDate(value)}
-                        style={styles.date}
+                        value={quantity}
+                        onChangeText={value => setQuantity(value)}
+                        style={styles.quantity}
                         clearButtonMode={'while-editing'}
-                        placeholder={'Enter Date in format YYYY-MM-DD'}
+                        placeholder={'Enter Quantity'}
                         placeholderTextColor={'grey'}
                 />
-
-        </View>
+                </View>
         <View style={styles.bottomContainer}>
-                 <Pressable style={styles.button} onPress={onListAdd}> 
+                 <Pressable style={styles.button} onPress={onItemAdd}> 
                         <Text style={styles.buttonText}> Add</Text>
                 </Pressable>
 
         </View>
     </View>
   );
-  };
+};
 
-export default AddList;
+export default AddItemScreen;
