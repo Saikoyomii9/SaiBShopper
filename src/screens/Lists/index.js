@@ -14,11 +14,10 @@ const listsTableName = 'lists';
 const ListsScreen = props => {
 
     const navigation = useNavigation();
-
     const [lists, setLists] = useState([]);
 
     useEffect(() => {//use effect only wen screen is in focus
-      const list = navigation.addListener('focus', () => {
+      const listener = navigation.addListener('focus', () => {
         
         // declare an empty arry that will store the results of the 
         //SELECT
@@ -58,12 +57,12 @@ const ListsScreen = props => {
               }
             },
             error => {
-              console.log('Error getting listst  ' + error.message);
+              console.log('Error getting Lists  ' + error.message);
             },
           )
         });
       });
-      return list;
+      return listener;
     });
     
 
@@ -86,7 +85,7 @@ const ListsScreen = props => {
       </TouchableOpacity>
       </View>
 
-     
+    
     </View>
   );
 };

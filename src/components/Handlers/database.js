@@ -92,7 +92,7 @@ module.exports = {
                                         console.log(name + ' added successfully');
                                 },
                                 error => {
-                                console.log('Error  adding name ' + error.message);
+                                console.log('Error  adding item ' + error.message);
                                 },
                         );
                 });

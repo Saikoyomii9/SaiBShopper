@@ -1,22 +1,28 @@
 import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
-import  { View, TouchableOpacity, Text } from 'react-native';
-const ItemsScreen = props => {
+
+const Item = props => {
+  const post = props.post; //added
+
+  const onPress = () => { //added function
+    console.log(post.name);
+  }
 
   return (
     <View style={styles.container}>
-     <View style={styles.bottom}>
-      <TouchableOpacity
-       style={styles.bottom}
-       onPress={()=>console.log('Add Item')}
-       >
-        <Text style={styles.buttonText}>Add Item!</Text>
+    <TouchableOpacity style={styles.touchable} onPress={onPress}> 
+       <View style={{flex:2}}>
+         <Text style={styles.name} numberOfLines={1}>{post.name}</Text>
+         <Text style={styles.price} numberOfLines={1}>{post.price}</Text> 
+       </View>
+       <View style={{flex:1}}>
+         <Text style={styles.quantity}>{post.quantity}</Text>
+       </View>
+     </TouchableOpacity>
 
-      </TouchableOpacity>
-
-     </View>
-    </View>
-  );
+ </View>
+);
 };
 
-export default ItemsScreen;
+export default Item;
