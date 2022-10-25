@@ -35,6 +35,7 @@ module.exports = {
 
         // declare function that will insert a row of data into the lists table
         addList: async function (name, store, date) {
+                console.log('inAddListFunction');
                 //declare  a transaction that will execute an SQL statement
                 (await shopperDB).transaction(txn => {
                         //execute the SQL
@@ -84,7 +85,7 @@ module.exports = {
                 (await shopperDB).transaction(txn => {
                         //execute the SQL
                         txn.executeSql(
-                                `INSERT INTO ${itemsTableName} (name, price, quantity) VALUES ("${item}", ${price}, ${quantity})`,
+                                `INSERT INTO ${itemsTableName} (name, price, quantity) VALUES ("${name}", ${price}, ${quantity})`,
                                 //arguments passed when using SQL prepared statement
                                 [],
                                 // callback function to handle results of SQL query

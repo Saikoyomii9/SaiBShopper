@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import  {View, TouchableOpacity, Text, FlatList} from 'react-native';
-import ItemC from '../../components/ItemC';
+import Item from '../../components/Item/index';
 import { useNavigation } from '@react-navigation/native'
 import styles from './styles';
 import { openDatabase } from "react-native-sqlite-storage"
@@ -66,10 +66,10 @@ const ItemsScreen = props => {
 
   return (
     <View style={styles.container}>
-       <View>
+      <View>
      <FlatList
           data={items}
-          renderItem={({item}) => <ItemC post={item} />} 
+          renderItem={({item}) => <Item post={item} />} 
           keyExtractor={item=> item.id}
           />
           </View>

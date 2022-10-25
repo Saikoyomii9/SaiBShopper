@@ -20,7 +20,6 @@ const Item = props => {
          <Text style={styles.quantity}>{post.quantity}</Text>
        </View>
      </TouchableOpacity>
-
  </View>
 );
 };
