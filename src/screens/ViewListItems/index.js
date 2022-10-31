@@ -1,8 +1,8 @@
 import React from 'react';
-import  { View} from 'react-native';
+import { View } from 'react-native';
 import styles from './styles';
 
-const Screen = props => {
+const ViewListItemsScreen= props => {
 
   return (
     <View style={styles.container}>
@@ -10,4 +10,4 @@ const Screen = props => {
   );
 };
 
-export default Screen;
+export default ViewListItemsScreen;

@@ -8,7 +8,6 @@ import ExistingListScreen from '../screens/ExistingList';
 import AddItemScreen from '../screens/AddItem';
 import AddListItemsScreen from '../screens/AddListItem';
 import ViewListItemsScreen from '../screens/ViewListItems';
-
 const Stack = createStackNavigator();
 
 const Router = props => {

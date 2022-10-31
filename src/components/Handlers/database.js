@@ -5,7 +5,8 @@ import { openDatabase} from "react-native-sqlite-storage"
 const shopperDB = openDatabase({name: 'Shopper.db'});
 const listsTableName = 'lists';
 const itemsTableName = 'Items';
-const listItemsTableName = 'list_Items'
+const listItemsTableName = 'list_items';
+
 
 module.exports = {
         //Declare the function that create the lists table
@@ -100,9 +101,7 @@ module.exports = {
                 });
         },
 
-
-
-        createListItemsTable: async function (list_id, item_id) {
+        createListItemsTable: async function () {
                 //Declare a transaction that will execute a SQL statement
                 (await shopperDB).transaction(txn => {
                         //Execute the SQL
@@ -132,19 +131,23 @@ module.exports = {
                 (await shopperDB).transaction(txn => {
                         //execute the SQL
                         txn.executeSql(
-                                `INSERT INTO ${listItemsTableName} (list_id, items_id) VALUES (${list_id}, ${item_id})`,
+                                `INSERT INTO ${listItemsTableName} (list_id, item_id) VALUES (${list_id}, ${item_id})`,
                                 //arguments passed when using SQL prepared statement
                                 [],
                                 // callback function to handle results of SQL query
                                 () => {
-                                        console.log("List Item added successfully");
+                                        console.log('List Item added successfully');
                                 },
                                 error => {
-                                console.log('Error  adding list ' + error.message);
+                                console.log('Error  adding item ' + error.message);
                                 },
                         );
                 });
         },
+
+
+
+
 };
 
 
