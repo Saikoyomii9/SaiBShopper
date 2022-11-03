@@ -139,7 +139,7 @@ module.exports = {
                                         console.log('List Item added successfully');
                                 },
                                 error => {
-                                console.log('Error  adding item ' + error.message);
+                                console.log('Error  adding List item ' + error.message);
                                 },
                         );
                 });
