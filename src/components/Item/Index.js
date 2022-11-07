@@ -16,7 +16,7 @@ const Item = props => {
       }  catch (error) {
         console.log('Error adding list item ' + error);
       }
-      alert('Item added to list!');
+      alert('Item added to My list!');
       navigation.navigate('Start Shopping!');
     } else {
       //Items Screen is using me
