@@ -55,11 +55,28 @@ const ItemsScreen = props => {
             }
           },
           error => {
-            console.log('Error getting Items  ' + error.message);
+            console.log('Error getting My Items  ' + error.message);
           },
         )
       });
     });
+
+    /*
+    id: 1
+    name: Comb
+    price: 3
+    quantity: 1
+
+    id: 2
+    name: Popcorn
+    price: 1.99
+    quantity: 2
+
+    id: 3
+    name: Lettuce
+    price: 1.34
+    quantity: 3
+    */
     return listener;
   });
 
