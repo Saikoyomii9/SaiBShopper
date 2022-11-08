@@ -4,6 +4,7 @@ import Item from '../../components/Item';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
+
 import { openDatabase} from "react-native-sqlite-storage"
 const shopperDB = openDatabase({name: 'Shopper.db'});
 const itemsTableName = 'Items';
@@ -14,9 +15,8 @@ const ViewListItemsScreen= props => {
 
   const post = props.route.params.post;
 
-
-  const navigation = useNavigation();
   const [items, setItems] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {//use effect only wen screen is in focus
     const listener = navigation.addListener('focus', () => {
