@@ -63,6 +63,18 @@ const ListsScreen = props => {
         });
       });
       return listener;
+
+
+      /*
+      [
+        {
+          id: 
+          name:
+          store:
+          date: 
+        }
+      ]
+      */
     });
     
 

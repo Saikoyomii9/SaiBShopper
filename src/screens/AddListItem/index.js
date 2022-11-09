@@ -51,26 +51,28 @@ const AddListItemsScreen = props => {
                 //assign the results array to the lists table
                 setItems(results);
                 /*[
-                //  {
-                // 
+                  {
                 id : 1, 
                 name: Comb, 
                 price: 3, 
                 quantity: 1, 
                 list_id 1
-                // id: 2, 
+                  },
+                  {
+                id: 2, 
                 name: Popcorn, 
                 price: 1.99, 
                 quantity: 2, 
                 list_id 1
-                // 
+                  },
+                  {
                 id: 3,
                  name: Lettuce, 
                  price: 1.34, 
                  quantity: 3, 
                  list_id: 1
-                //  }
-                //]
+                },
+                ]
                 */
 
             } else {

@@ -12,7 +12,7 @@ const Item = props => {
     if (post.list_id) {
       //Add list Item screen is using me
       try {
-        database.addListItem(post.list_id,post.list_id, post.id);
+        database.addListItem(post.list_id, post.id);
       }  catch (error) {
         console.log('Error adding list item ' + error);
       }
