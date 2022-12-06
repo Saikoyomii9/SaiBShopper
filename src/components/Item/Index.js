@@ -6,7 +6,7 @@ import styles from './styles';
 const database = require('../../components/Handlers/database.js')
 const Item = props => {
   const post = props.post; //added
- const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const onPress = () => { //added function
     if (post.list_id) {

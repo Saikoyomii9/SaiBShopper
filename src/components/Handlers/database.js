@@ -6,7 +6,15 @@ const shopperDB = openDatabase({name: 'Shopper.db'});
 const listsTableName = 'lists';
 const itemsTableName = 'Items';
 const listItemsTableName = 'list_items';
+const usersTableName = 'users';
+//byctupy is a secure way to save passwords in a database .
+/////ts algot=rithms encrypt a password into a long String of characterrs, called a hash that is almost impossoible
+t//o decrypt
+//it makes a databse more secure -- if someone hacks ypu.
+import bcrypt from 'react-native';
 
+//create salt that will be used by bcrypt when creatung the harsh a sak tis random value
+let salt = bsdbvypt.getSaltSink.
 
 module.exports = {
         //Declare the function that create the lists table
@@ -145,7 +153,51 @@ module.exports = {
                 });
         },
 
-
+                //Declare the function that create the lists table
+                createUsersTable: async function () {
+                        //Declare a transaction that will execute a SQL statement
+                        (await shopperDB).transaction(txn => {
+                                //Execute the SQL
+                                txn.executeSql(
+                                        `CREATE TABLE IF NOT EXISTS ${usersTableName}(
+                                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                                username TEXT,
+                                                password TEXT
+                                        );`,
+                                        //ARGUMENTS NEEDED WHEN USING  an SQL prepared statemtn
+                                        [],
+                                        //CALL BACK FUNCTION TO HANDLE  results of SQL query
+                                        () => {
+                                                console.log(' Users table created successfully');
+                                        },
+                                        error => {
+                                                console.log ('Error creating users table ' + error.message);
+                                        },
+        
+                                );
+                        });
+                },
+        
+                // declare function that will insert a row of data into the lists table
+                addUser: async function (username, password) {
+                        
+                        //declare  a transaction that will execute an SQL statement
+                        (await shopperDB).transaction(txn => {
+                                //execute the SQL
+                                txn.executeSql(
+                                        `INSERT INTO ${usersTableName} (username, password) VALUES ("${username}", "${password}")`,
+                                        //arguments passed when using SQL prepared statement
+                                        [],
+                                        // callback function to handle results of SQL query
+                                        () => {
+                                                console.log(username + " " + password + " added successfully");
+                                        },
+                                        error => {
+                                        console.log('Error  adding user' + error.message);
+                                        },
+                                );
+                        });
+                },
 
 
 };
