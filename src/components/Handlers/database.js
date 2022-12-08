@@ -9,13 +9,9 @@ const listItemsTableName = 'list_items';
 const usersTableName = 'users';
 //byctupy is a secure way to save passwords in a database .
 /////ts algot=rithms encrypt a password into a long String of characterrs, called a hash that is almost impossoible
-t//o decrypt
+//o decrypt
 //it makes a databse more secure -- if someone hacks ypu.
-import bcrypt from 'react-native';
-
 //create salt that will be used by bcrypt when creatung the harsh a sak tis random value
-let salt = bsdbvypt.getSaltSink.
-
 module.exports = {
         //Declare the function that create the lists table
         createListsTable: async function () {
@@ -180,7 +176,6 @@ module.exports = {
         
                 // declare function that will insert a row of data into the lists table
                 addUser: async function (username, password) {
-                        
                         //declare  a transaction that will execute an SQL statement
                         (await shopperDB).transaction(txn => {
                                 //execute the SQL

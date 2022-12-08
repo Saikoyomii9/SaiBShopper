@@ -107,12 +107,6 @@ const ExistingListScreen = props => {
         const onViewList = () => {
                 navigation.navigate('View List Item', {post: post});
         }
-        const onViewList = () => {
-                navigation.navigate('View List Item'), {post: post};
-        }
-        const onAddItem = () => {
-                navigation.navigate('View List Item'), {post: post};
-        }
 
   return (
     <View style={styles.container}>

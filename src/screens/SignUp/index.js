@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import bcrypt from 'react-native-bcrypt';
 import { openDatabase} from "react-native-sqlite-storage"
+import database from '../../components/Handlers/database'
 import { BorderlessButton } from 'react-native-gesture-handler';
 
 const shopperDB = openDatabase({name: 'Shopper.db'});
@@ -118,6 +119,26 @@ const HomeScreen = () => {
           onPress={() => onSubmit()}>
           <Text style={styles.buttonText}>Sign In</Text>
         </Pressable>
+        <Pressable
+          onPress={() => navigation.navigate('Sign Up')}
+          style={{
+            height: 50,
+            borderRadius: 30,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginTop: 15,
+            backgroundColor: 'black',
+            marginHorizontal: 10,
+          }}
+          >
+            <Text
+            style={{
+              color: 'white',
+              fontSize: 16,
+              fontWeight: 'bold',
+            }}>New Here? Sign Up?</Text>
+        </Pressable>
+
     </View>
   );
 };
